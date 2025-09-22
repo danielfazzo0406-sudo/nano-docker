@@ -14,3 +14,19 @@ services:
     ports:
       - 7075:7075
       - 7075:7075/udp
+version: "3.9"
+
+services:
+  n8n:
+    image: n8nio/n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - DB_SQLITE_POOL_SIZE=2
+      - GENERIC_TIMEZONE=Europe/Rome
+      - N8N_ENCRYPTION_KEY=5f8a1c4b3d6e9f0a7c2d8b1e3f4a6c9b
+      - N8N_PROTOCOL=http
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+    volumes:
